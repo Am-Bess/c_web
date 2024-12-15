@@ -20,7 +20,7 @@ namespace HW_2.Service
             this.context = context;
         }
 
-        public void AddCategory(CategoryDto category)    // Добавление категории.
+        public void AddCategory(CategoryDto category)   
         {
             if (!context.Categories.Any(x => x.Name.Equals(category.Name)))
             {
@@ -31,9 +31,9 @@ namespace HW_2.Service
             }
         }
 
-        public IEnumerable<CategoryDto> GetCategories() // Получение категории.
+        public IEnumerable<CategoryDto> GetCategories() 
         {
-            if (memoryCache.TryGetValue("categorys", out List<CategoryDto> categoriesCash))
+            if (memoryCache.TryGetValue("categorys", out List<CategoryDto>? categoriesCash))
             {
                 return categoriesCash;
             }
@@ -45,14 +45,14 @@ namespace HW_2.Service
 
         public void DeletCategory(CategoryDto category)
         {
-            if (context.Categories.Any(x => x.Name.Equals(category.Name))) // Проверяем, есть ли такая категория.
+            if (context.Categories.Any(x => x.Name.Equals(category.Name))) 
             {
                 var entity = context.Categories.Where(x => x.Name.Equals(category.Name)).FirstOrDefault();
                 var groupProduct = context.Products.Where(x => x.Id.Equals(category.Id)).ToList();
-                if (groupProduct.Any()) context.Products.RemoveRange(groupProduct); // Удаляем товары, предварительно проверив, что в категории хоть что=то есть.
-                context.Categories.Remove(entity); // Удаялем Группу.
-                context.SaveChanges(); // Сохраняем изменения.
-                memoryCache.Remove("categorys");    // Чистим кэши.
+                if (groupProduct.Any()) context.Products.RemoveRange(groupProduct); 
+                context.Categories.Remove(entity); 
+                context.SaveChanges(); 
+                memoryCache.Remove("categorys");   
                 memoryCache.Remove("products");
                 memoryCache.Remove("productsCSV");
             }

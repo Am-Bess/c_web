@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using System.Text;
-using System.Text.Json;
 using HW_2.IAbstract;
 using HW_2.Models;
 using HW_2.Models.Context;
@@ -18,7 +13,7 @@ namespace HW_2.Service
         private IMemoryCache memoryCache;
         private readonly ProductContext context;
 
-        public ServiceProduct(IMapper mapper, IMemoryCache memoryCache, ProductContext context) 
+        public ServiceProduct(IMapper mapper, IMemoryCache memoryCache, ProductContext context)
         {
             this.mapper = mapper;
             this.memoryCache = memoryCache;
@@ -39,7 +34,7 @@ namespace HW_2.Service
 
         public IEnumerable<ProductDto> GetProducts()
         {
-            if (memoryCache.TryGetValue("products", out List<ProductDto> productsCash))
+            if (memoryCache.TryGetValue("products", out List<ProductDto>? productsCash))
             {
                 return productsCash;
             }
@@ -51,10 +46,10 @@ namespace HW_2.Service
 
         public void UpPrise(ProductDto product)
         {
-            if (context.Products.Any(x => x.Name.Equals(product.Name))) // Проверяем, есть ли такой продукт.
+            if (context.Products.Any(x => x.Name.Equals(product.Name)))
             {
                 var entity = context.Products.Where(x => x.Name.Equals(product.Name)).FirstOrDefault();
-                entity.Price = product.Price;
+                entity!.Price = product.Price;
                 context.SaveChanges();
                 memoryCache.Remove("products");
                 memoryCache.Remove("productsCSV");
@@ -63,11 +58,11 @@ namespace HW_2.Service
 
         public void DeletProduct(ProductDto product)
         {
-            if (context.Products.Any(x => x.Name.Equals(product.Name))) // Проверяем, есть ли такой продукт.
+            if (context.Products.Any(x => x.Name.Equals(product.Name)))
             {
                 var entity = context.Products.Where(x => x.Name.Equals(product.Name)).FirstOrDefault();
-                context.Products.Remove(entity); // Удаяляем его.
-                context.SaveChanges(); // Сохраняем изменения.
+                context.Products.Remove(entity);
+                context.SaveChanges();
                 memoryCache.Remove("products");
                 memoryCache.Remove("productsCSV");
             }
