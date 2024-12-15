@@ -1,0 +1,4 @@
+Id: 1; Name: name1; Descript: prod1; Price: 123; CategoriId: 1;
+Id: 4; Name: name4; Descript: prod4; Price: 223; CategoriId: 3;
+Id: 2; Name: name2; Descript: prod2; Price: 321; CategoriId: 1;
+Id: 3; Name: name3; Descript: prod3; Price: 432; CategoriId: 2;
