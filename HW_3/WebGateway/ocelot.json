@@ -1,0 +1,99 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Product/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5510
+        }
+      ],
+      "UpstreamPathTemplate": "/Product/{method}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "SwaggerKey": "Product"
+    },
+    {
+      "DownstreamPathTemplate": "/Category/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5510
+        }
+      ],
+      "UpstreamPathTemplate": "/Category/{method}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete"
+      ],
+      "SwaggerKey": "Product"
+    },
+    {
+      "DownstreamPathTemplate": "/File/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5510
+        }
+      ],
+      "UpstreamPathTemplate": "/File/{method}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "SwaggerKey": "Product"
+    },
+    {
+      "DownstreamPathTemplate": "/Storage/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5520
+        }
+      ],
+      "UpstreamPathTemplate": "/Storage/{method}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "SwaggerKey": "Storege"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5530"
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "Product",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "ProductService",
+          "Version": "v1",
+          "Url": "https://localhost:5510/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Storege",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "StoregeService",
+          "Version": "v1",
+          "Url": "https://localhost:5520/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

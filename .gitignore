@@ -2,4 +2,11 @@ HW_1/bin/*
 HW_1/obj/*
 HW_2/bin/*
 HW_2/obj/*
+HW_3/AppStoreg/obj/*
+HW_3/AppStoreg/bin/*
+HW_3/AppStoregStore/obj/*
+HW_3/AppStoregStore/bin/*
+HW_3/WebGateway/obj/*
+HW_3/WebGateway/bin/*
+
 .DS_Store
