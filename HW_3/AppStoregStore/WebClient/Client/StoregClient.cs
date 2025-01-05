@@ -8,7 +8,7 @@ namespace AppStoregStore.WebClient.Client
         readonly HttpClient Client = new HttpClient();
         public async Task<bool> ExistsProsuct(int id)
         {
-            using HttpResponseMessage responseMessage = await Client.GetAsync($"https://localhost:5186/Product/CheckProduct?productId={id.ToString()}");
+            using HttpResponseMessage responseMessage = await Client.GetAsync($"http://localhost:5186/Product/CheckProduct?productId={id.ToString()}");
             responseMessage.EnsureSuccessStatusCode();
             string respond = await responseMessage.Content.ReadAsStringAsync();
 

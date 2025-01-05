@@ -70,7 +70,7 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5530"
+    "BaseUrl": "http://localhost:6696"
   },
   "SwaggerEndPoints": [
     {
@@ -80,7 +80,7 @@
         {
           "Name": "ProductService",
           "Version": "v1",
-          "Url": "https://localhost:5510/swagger/v1/swagger.json"
+          "Url": "http://localhost:5510/swagger/v1/swagger.json"
         }
       ]
     },
@@ -91,7 +91,7 @@
         {
           "Name": "StoregeService",
           "Version": "v1",
-          "Url": "https://localhost:5520/swagger/v1/swagger.json"
+          "Url": "http://localhost:5520/swagger/v1/swagger.json"
         }
       ]
     }

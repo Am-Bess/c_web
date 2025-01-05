@@ -18,7 +18,7 @@ namespace AppStoreg.Controllers
         {
             try
             {
-                string path = $"https://{Request.Host.ToString()}/static/{service.GetProductCsvUrl()}";
+                string path = $"http://{Request.Host.ToString()}/static/{service.GetProductCsvUrl()}";
                 return path;
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace AppStoreg.Controllers
         {
             try
             {
-                string path = $"https://{Request.Host.ToString()}/static/{service.GetStatistic()}";
+                string path = $"http://{Request.Host.ToString()}/static/{service.GetStatistic()}";
                 return path;
             }
             catch (Exception ex)
