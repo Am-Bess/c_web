@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+ 
+ db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - "8070:8080"
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  
+  appproduct:
+    image: appproduct
+    restart: always
+    ports:
+      - "8010:8080"
+  
+  appstore:
+    image: appstore
+    restart: always
+    ports:
+      - "8020:8080"
+  
+  gateway:
+    image: gateway
+    restart: always
+    ports:
+      - "8030:8080"
